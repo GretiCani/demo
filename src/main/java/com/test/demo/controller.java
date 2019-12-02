@@ -2,10 +2,7 @@ package com.test.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,8 +26,8 @@ public class controller {
         return ResponseEntity.ok(languageService.languageNames(baseDir)) ;
     }
 
-    @GetMapping("/language/{filename}")
-    public ResponseEntity<List<LanguageDTO>> getLanguage(@PathVariable String filename)throws IOException{
+    @GetMapping("/language")
+    public ResponseEntity<List<LanguageDTO>> getLanguage(@RequestParam String filename)throws IOException{
         return ResponseEntity.ok(languageService.findLanguageByFilename(baseDir,filename));
 
     }
